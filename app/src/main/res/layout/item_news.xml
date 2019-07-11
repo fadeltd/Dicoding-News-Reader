@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
+>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="2dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="4dp"
+    >
+
+        <ImageView
+                android:id="@+id/news_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="108dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                android:transitionName="thumbnail"
+        />
+
+        <RelativeLayout
+                android:layout_marginStart="4dp"
+                android:layout_width="0dp"
+                android:layout_height="108dp"
+                android:layout_weight="2.5"
+        >
+
+            <LinearLayout
+                    android:id="@+id/title_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_alignParentTop="true"
+                    android:layout_above="@+id/source_time_layout"
+            >
+
+                <TextView
+                        android:id="@+id/news_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        tools:text="Cek Harga Tiket Pesawat LCC, Lion Air dan Citilink Murah Mana? - Kompas.com - KOMPAS.com"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:textColor="@android:color/black"
+                        android:transitionName="title"
+                />
+
+
+                <TextView
+                        android:id="@+id/news_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        tools:text="Ana Shofiana Syatiri"
+                />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                    android:id="@+id/source_time_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:layout_alignParentBottom="true"
+            >
+
+                <TextView
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/news_source"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@android:color/darker_gray"
+                        tools:text="Kompas.com"
+                        android:transitionName="source"
+                />
+
+                <TextView
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/news_timestamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="12sp"
+                        android:textColor="@android:color/black"
+                        tools:text="12 Minutes ago"
+                        android:transitionName="timestamp"
+                />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
