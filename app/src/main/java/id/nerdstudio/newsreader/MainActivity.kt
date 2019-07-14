@@ -15,7 +15,13 @@ import id.nerdstudio.newsreader.adapter.NewsAdapter
 import id.nerdstudio.newsreader.config.AppConfig
 import id.nerdstudio.newsreader.data.News
 import id.nerdstudio.newsreader.util.getCurrentDayDate
+import id.nerdstudio.newsreader.util.transitionName
 import id.nerdstudio.newsreader.detail.DetailActivity
+import id.nerdstudio.newsreader.detail.DetailActivity.Companion.EXTRA_NEWS
+import id.nerdstudio.newsreader.detail.DetailActivity.Companion.EXTRA_TRANSITION_SOURCE
+import id.nerdstudio.newsreader.detail.DetailActivity.Companion.EXTRA_TRANSITION_THUMBNAIL
+import id.nerdstudio.newsreader.detail.DetailActivity.Companion.EXTRA_TRANSITION_TIMESTAMP
+import id.nerdstudio.newsreader.detail.DetailActivity.Companion.EXTRA_TRANSITION_TITLE
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_news.*
 
@@ -49,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                             var list = listOf<News>()
                             for (i in 0 until articles.size()) {
                                 val news = Gson().fromJson(articles[i].asJsonObject, News::class.java)
-                                list += news
+                                list = list + news
                             }
                             render(list)
                         } else {
@@ -64,18 +70,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun render(list: List<News>) {
-        news_list.adapter = NewsAdapter(this, list) {
-            val intent = Intent(this, DetailActivity::class.java)
-                .putExtra(DetailActivity.ARG_NEWS, it)
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this,
-                Pair.create(news_thumbnail, "thumbnail"),
-                Pair.create(news_title, "title"),
-                Pair.create(news_source, "source"),
-                Pair.create(news_timestamp, "timestamp")
-            )
-            startActivity(intent, options.toBundle())
-        }
+        news_list.adapter = NewsAdapter(this, list)
         news_list.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         news_list.setHasFixedSize(true)
     }

@@ -29,7 +29,6 @@
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:padding="8dp"
-                    android:transitionName="title"
             />
 
             <ImageView
@@ -39,7 +38,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
                     android:scaleType="fitXY"
-                    android:transitionName="thumbnail"
             />
 
             <RelativeLayout
@@ -57,7 +55,6 @@
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
                         tools:text="Kompas.com"
-                        android:transitionName="source"
                 />
 
                 <TextView
@@ -86,7 +83,6 @@
                         android:textSize="12sp"
                         tools:text="12 Minutes Ago"
                         android:textColor="@android:color/black"
-                        android:transitionName="timestamp"
                 />
 
                 <TextView

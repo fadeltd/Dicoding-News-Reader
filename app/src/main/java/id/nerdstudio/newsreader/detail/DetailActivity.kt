@@ -1,16 +1,17 @@
 package id.nerdstudio.newsreader.detail
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import id.nerdstudio.newsreader.R
-import id.nerdstudio.newsreader.data.News
-import kotlinx.android.synthetic.main.activity_detail.*
+import android.os.Build
 import android.view.MenuItem
 import android.text.Html
 import android.text.method.LinkMovementMethod
+import androidx.appcompat.app.AppCompatActivity
 import com.koushikdutta.ion.Ion
+import id.nerdstudio.newsreader.R
+import id.nerdstudio.newsreader.data.News
 import id.nerdstudio.newsreader.util.toRelativeTime
+import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
 
@@ -18,10 +19,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val news = intent.getParcelableExtra<News>(ARG_NEWS)
-
-        supportActionBar?.title = news.title
-        render(news)
+        render()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -35,7 +33,17 @@ class DetailActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun render(news: News) {
+    private fun render() {
+        val news = intent.getParcelableExtra<News>(EXTRA_NEWS)
+        supportActionBar?.title = news.title
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            postponeEnterTransition()
+            news_thumbnail.transitionName = intent.getStringExtra(EXTRA_TRANSITION_THUMBNAIL)
+            news_title.transitionName = intent.getStringExtra(EXTRA_TRANSITION_TITLE)
+            news_source.transitionName = intent.getStringExtra(EXTRA_TRANSITION_SOURCE)
+            news_timestamp.transitionName = intent.getStringExtra(EXTRA_TRANSITION_TIMESTAMP)
+            startPostponedEnterTransition()
+        }
         news_title.text = news.title
         Ion
             .with(this)
@@ -58,6 +66,10 @@ class DetailActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val ARG_NEWS = "news"
+        const val EXTRA_NEWS = "news"
+        const val EXTRA_TRANSITION_THUMBNAIL = "thumbnail"
+        const val EXTRA_TRANSITION_TITLE = "title"
+        const val EXTRA_TRANSITION_SOURCE = "source"
+        const val EXTRA_TRANSITION_TIMESTAMP = "timestamp"
     }
 }

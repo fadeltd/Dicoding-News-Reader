@@ -26,7 +26,6 @@
                 android:layout_height="108dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
-                android:transitionName="thumbnail"
         />
 
         <RelativeLayout
@@ -55,7 +54,6 @@
                         android:maxLines="2"
                         android:ellipsize="end"
                         android:textColor="@android:color/black"
-                        android:transitionName="title"
                 />
 
 
@@ -84,7 +82,6 @@
                         android:textSize="12sp"
                         android:textColor="@android:color/darker_gray"
                         tools:text="Kompas.com"
-                        android:transitionName="source"
                 />
 
                 <TextView
@@ -96,7 +93,6 @@
                         android:textSize="12sp"
                         android:textColor="@android:color/black"
                         tools:text="12 Minutes ago"
-                        android:transitionName="timestamp"
                 />
 
             </RelativeLayout>
